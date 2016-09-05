@@ -5,14 +5,15 @@ import Card from '../Card'
 
 class Board extends React.Component {
 
-    get state() {
-        return {
+    constructor() {
+        super()
+        this.state = {
             cards: [
                 {
                     key: 0,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 1,
                     text: 'honey',
@@ -22,7 +23,7 @@ class Board extends React.Component {
                     key: 2,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 3,
                     text: 'honey',
@@ -32,7 +33,7 @@ class Board extends React.Component {
                     key: 4,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 5,
                     text: 'honey',
@@ -47,27 +48,27 @@ class Board extends React.Component {
                     key: 7,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 8,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 9,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 10,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'blue'
                 },{
                     key: 11,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 12,
                     text: 'honey',
@@ -77,22 +78,22 @@ class Board extends React.Component {
                     key: 13,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 14,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 15,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 16,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 17,
                     text: 'honey',
@@ -112,22 +113,22 @@ class Board extends React.Component {
                     key: 20,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 21,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 22,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'yellow'
                 },{
                     key: 23,
                     text: 'honey',
                     revealed: false,
-                    type: 'red'
+                    type: 'black'
                 },{
                     key: 24,
                     text: 'honey',
@@ -185,11 +186,19 @@ class Board extends React.Component {
   //       </div>
   // }
   //
+  handleClick(id) {
+    let updated = this.state.cards.map(card => {
+        if(card.key === id)
+            card.revealed = true
+        return card
+    })
+    this.setState ({cards: updated})
+  }
 
   render() {
-      return <div>
+      return <div className={s.root}>
         {this.state.cards.map((card)=> {
-            return <Card text={card.text.toUpperCase()} />
+            return <Card card={card} onClick={this.handleClick.bind(this)} />
         })}
       </div>
   }

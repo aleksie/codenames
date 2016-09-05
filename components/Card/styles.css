@@ -9,6 +9,19 @@
   display: inline-block;
 }
 
+.red {
+    background-color: red !important;
+}
+.blue {
+    background-color: blue !important;
+}
+.yellow {
+    background-color: yellow !important;
+}
+.black {
+    background-color: black !important;
+}
+
 .cardInner {
   border: 2px solid #b8a48b;
   border-radius: 8px;
