@@ -26,7 +26,7 @@ class Card extends React.Component {
       }
       var overlay = cx({
           [s.card] : true,
-          [map[this.props.card.type]]: this.props.card.revealed
+          [map[this.props.card.type]]: this.props.card.revealed || this.props.isLegendShowing
        });
 
       return <div className={overlay}  onClick={this.handleClick.bind(this)}>

@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import s from './styles.css';
+import Button from '../Button';
 import Card from '../Card';
 import words from './words.json';
 import types from './types.json';
+
 
 class Board extends React.Component {
 
@@ -13,11 +15,11 @@ class Board extends React.Component {
         this.types = types.types;
         this.words = words.words;
         let cards = this.generateNewGameState();
-        console.log("cards", cards);
         this.state = {
-            cards: cards
+            cards: cards,
+            isLegendShowing: false
         };
-    }
+     }
 
     generateNewGameState() {
         console.log("generateNewGameState");
@@ -82,10 +84,30 @@ class Board extends React.Component {
     this.setState ({cards: updated})
   }
 
+  legendClick() {
+      let updated = this.state;
+      updated.isLegendShowing = !updated.isLegendShowing;
+      this.setState(updated);
+  }
+
+  newGame() {
+      let cards = this.generateNewGameState();
+      let state = {
+          cards: cards,
+          isLegendShowing: false
+      };
+
+      this.setState(state);
+  }
+
   render() {
       return <div className={s.root}>
+      <input type="button" className="buttonLegend" onClick={this.legendClick.bind(this)} value={this.state.isLegendShowing ? "HIDE LEGEND" : "SHOW LEGEND"} />
+      <input type="button" className="buttonNewGame" onClick={this.newGame.bind(this)} value="NEW GAME"/>
+
+      <br/>
         {this.state.cards.map((card)=> {
-            return <Card key={card.id} card={card}  onClick={this.handleClick.bind(this)} />
+            return <Card key={card.id} card={card} isLegendShowing={this.state.isLegendShowing} onClick={this.handleClick.bind(this)} />
         })}
       </div>
   }
