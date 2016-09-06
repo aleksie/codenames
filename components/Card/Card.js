@@ -5,40 +5,24 @@ import s from './styles.css';
 class Card extends React.Component {
 
   static propTypes = {
-    // component: PropTypes.oneOf([
-    //   PropTypes.string,
-    //   PropTypes.element,
-    //   PropTypes.func,
-    // ]),
-    // type: PropTypes.oneOf(['raised', 'fab', 'mini-fab', 'icon']),
-    // to: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
-    // href: PropTypes.string,
-    // className: PropTypes.string,
-    // colored: PropTypes.bool,
-    // primary: PropTypes.bool,
-    // accent: PropTypes.bool,
-    // ripple: PropTypes.bool,
-    // children: PropTypes.node,
   };
 
   componentDidMount() {
-    // window.componentHandler.upgradeElement(this.root);
   }
 
   componentWillUnmount() {
-    // window.componentHandler.downgradeElements(this.root);
   }
 
   handleClick() {
-      this.props.onClick(this.props.card.key);
+      this.props.onClick(this.props.card.id);
  }
 
   render() {
       var map = {
-          'red' : s.red,
-          'blue' : s.blue,
-          'yellow': s.yellow,
-          'black': s.black
+          'RED' : s.red,
+          'BLUE' : s.blue,
+          'YELLOW': s.yellow,
+          'BLACK': s.black
       }
       var overlay = cx({
           [s.card] : true,

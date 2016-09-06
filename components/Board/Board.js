@@ -1,194 +1,81 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import s from './styles.css';
-import Card from '../Card'
+import Card from '../Card';
+import words from './words.json';
+import types from './types.json';
 
 class Board extends React.Component {
 
     constructor() {
-        super()
+        super();
+        this.generateNewGameState = this.generateNewGameState.bind(this);
+        this.types = types.types;
+        this.words = words.words;
+        let cards = this.generateNewGameState();
+        console.log("cards", cards);
         this.state = {
-            cards: [
-                {
-                    key: 0,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 1,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 2,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 3,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 4,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 5,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 6,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 7,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 8,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 9,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 10,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'blue'
-                },{
-                    key: 11,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 12,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 13,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 14,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 15,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 16,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 17,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 18,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 19,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                },{
-                    key: 20,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 21,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 22,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'yellow'
-                },{
-                    key: 23,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'black'
-                },{
-                    key: 24,
-                    text: 'honey',
-                    revealed: false,
-                    type: 'red'
-                }
-            ]
+            cards: cards
+        };
+    }
+
+    generateNewGameState() {
+        console.log("generateNewGameState");
+        let cards = [];
+
+        let isRedFirst = !!Math.round(Math.random() * 1);
+        console.log("isRedFirst", isRedFirst);
+
+        if (isRedFirst) {
+            this.types.push("RED");
+        } else {
+            this.types.push("BLUE");
         }
+
+        let wordsIndexes = this.getRandomIndexes(this.words.length - 1);
+        let typeIndexes = this.getRandomIndexes(this.types.length - 1);
+        console.log(wordsIndexes);
+        console.log(typeIndexes);
+        for (var i=0; i < 25; i++) {
+            let card = {
+                id: i,
+                text: this.words[wordsIndexes[i]],
+                type: (this.types[typeIndexes[i]]),
+                revealed: false
+            };
+            cards.push(card);
+
+    }
+        return cards;
+    }
+
+    getRandomIndexes(max) {
+        let indexes = [];
+        for (var i=0; i < 25; i++) {
+            let index = Math.floor(Math.random() * (max + 1));
+            if (indexes.indexOf(index) == -1) {
+                indexes.push(index);
+            } else {
+                i--;
+            }
+
+        }
+        return indexes;
+
     }
 
   static propTypes = {
-    // component: PropTypes.oneOf([
-    //   PropTypes.string,
-    //   PropTypes.element,
-    //   PropTypes.func,
-    // ]),
-    // type: PropTypes.oneOf(['raised', 'fab', 'mini-fab', 'icon']),
-    // to: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
-    // href: PropTypes.string,
-    // className: PropTypes.string,
-    // colored: PropTypes.bool,
-    // primary: PropTypes.bool,
-    // accent: PropTypes.bool,
-    // ripple: PropTypes.bool,
-    // children: PropTypes.node,
   };
 
   componentDidMount() {
-    // window.componentHandler.upgradeElement(this.root);
   }
 
   componentWillUnmount() {
-    // window.componentHandler.downgradeElements(this.root);
   }
 
-  // render() {
-  //     return <div className="mdl-grid">
-  //         <div className="mdl-cell mdl-cell--1-col">1</div>
-  //         <div className="mdl-cell mdl-cell--2-col">
-  //           <Card text="HONEY"/>
-  //         </div>
-  //         <div className="mdl-cell mdl-cell--2-col">
-  //           <Card text="HONEY"/>
-  //         </div>
-  //         <div className="mdl-cell mdl-cell--2-col">
-  //           <Card text="HONEY"/>
-  //         </div>
-  //         <div className="mdl-cell mdl-cell--2-col">
-  //           <Card text="HONEY"/>
-  //         </div>
-  //         <div className="mdl-cell mdl-cell--2-col">
-  //           <Card text="HONEY"/>
-  //         </div>
-  //         <div className="mdl-cell mdl-cell--1-col">1</div>
-  //       </div>
-  // }
-  //
   handleClick(id) {
     let updated = this.state.cards.map(card => {
-        if(card.key === id)
+        if(card.id === id)
             card.revealed = true
         return card
     })
@@ -198,11 +85,10 @@ class Board extends React.Component {
   render() {
       return <div className={s.root}>
         {this.state.cards.map((card)=> {
-            return <Card card={card} onClick={this.handleClick.bind(this)} />
+            return <Card key={card.id} card={card}  onClick={this.handleClick.bind(this)} />
         })}
       </div>
   }
-
 
 }
 
