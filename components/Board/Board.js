@@ -12,6 +12,7 @@ class Board extends React.Component {
     constructor() {
         super();
         this.generateNewGameState = this.generateNewGameState.bind(this);
+        this.checkWinner = this.checkWinner.bind(this);
         this.types = types.types;
         this.words = words.words;
         let cards = this.generateNewGameState();
@@ -25,15 +26,13 @@ class Board extends React.Component {
         console.log("generateNewGameState");
         let cards = [];
 
-        let isRedFirst = !!Math.round(Math.random() * 1);
-        console.log("isRedFirst", isRedFirst);
+        this.isRedFirst = !!Math.round(Math.random() * 1);
+        let lastWord = this.isRedFirst ? "RED" : "BLUE";
 
-        if (isRedFirst) {
-            this.types.push("RED");
-        } else {
-            this.types.push("BLUE");
-        }
+        this.types[24] = lastWord;
 
+        console.log(this.types);
+        console.log(types);
         let wordsIndexes = this.getRandomIndexes(this.words.length - 1);
         let typeIndexes = this.getRandomIndexes(this.types.length - 1);
         console.log(wordsIndexes);
@@ -75,13 +74,17 @@ class Board extends React.Component {
   componentWillUnmount() {
   }
 
-  handleClick(id) {
+  cardClick(id) {
+      let type = ""
     let updated = this.state.cards.map(card => {
-        if(card.id === id)
-            card.revealed = true
+        if(card.id === id) {
+            card.revealed = true;
+            type = card.type;
+        }
         return card
     })
     this.setState ({cards: updated})
+    this.checkWinner(type);
   }
 
   legendClick() {
@@ -90,7 +93,7 @@ class Board extends React.Component {
       this.setState(updated);
   }
 
-  newGame() {
+  newGameClick() {
       let cards = this.generateNewGameState();
       let state = {
           cards: cards,
@@ -100,14 +103,27 @@ class Board extends React.Component {
       this.setState(state);
   }
 
+  checkWinner(type){
+
+      if (type === "YELLOW") {
+          return;
+      }
+      if (type === "BLACK") {
+          alert("Your opponent wins!");
+      } else {
+          //this.state.map(card => )
+          //todo: proveri dali ke najdes karta so tip toj i revealed false
+      }
+
+  }
+
   render() {
       return <div className={s.root}>
       <input type="button" className="buttonLegend" onClick={this.legendClick.bind(this)} value={this.state.isLegendShowing ? "HIDE LEGEND" : "SHOW LEGEND"} />
-      <input type="button" className="buttonNewGame" onClick={this.newGame.bind(this)} value="NEW GAME"/>
-
+      <input type="button" className="buttonNewGame" onClick={this.newGameClick.bind(this)} value="NEW GAME"/>
       <br/>
         {this.state.cards.map((card)=> {
-            return <Card key={card.id} card={card} isLegendShowing={this.state.isLegendShowing} onClick={this.handleClick.bind(this)} />
+            return <Card key={card.id} card={card} isLegendShowing={this.state.isLegendShowing} onClick={this.cardClick.bind(this)} />
         })}
       </div>
   }
