@@ -1,44 +1,44 @@
 .card {
+  display: flex;
   background-color: #eadaca;
   border-radius: 12px;
   padding: 9px;
   text-align: center;
-  margin: 2px 3px 0px 0px;
-  font-weight: bold;
-  width: 17%;
-  display: inline-block;
+  width: 300px;
+  height: 150px;
+  margin: 8px;
 }
 
-.red {
-    background-color: red !important;
-}
-.blue {
-    background-color: blue !important;
-}
-.yellow {
-    background-color: yellow !important;
-}
-.black {
-    background-color: black !important;
-}
-
-.cardInner {
+.inner {
+  display: flex;
+  flex-flow: column;
   border: 2px solid #b8a48b;
   border-radius: 8px;
   padding: 0 5px 5px 5px;
 }
 
-.cardUpper {}
-
-.cardCircle {}
-
-.cardImage {
-  float: right;
-  width: 10%;
-  border: 1px solid a29687
+.upper {
+  display: flex;
+  flex: 6 6 auto;
+  flex-flow: column;
 }
 
-.cardGrey {
+.lower {
+  display: flex;
+  flex: 4 4 auto;
+  align-items: center;
+  color: black;
+  background-color: white;
+  border-radius: 0px 0px 4px 4px;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 4px;
+}
+
+.grey {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
   color: #a29687;
   font-style: italic;
   border-top: 1.4px solid;
@@ -46,12 +46,27 @@
   padding-top: 2px;
   font-size: 0.9em;
   transform: rotate(180deg);
+  font-weight: bold;
 }
 
-.cardLower {
-  color: black;
-  background-color: white;
-  border-radius: 0px 0px 4px 4px;
-  font-size: 1.1em;
-  padding: 4px;
+.circle {}
+
+.text {
+  margin: auto;
+}
+
+.red {
+  box-shadow: 0px 0px 10px 5px tomato;
+}
+
+.blue {
+  box-shadow: 0px 0px 10px 5px cadetblue;
+}
+
+.yellow {
+  box-shadow: 0px 0px 10px 5px yellow;
+}
+
+.black {
+  box-shadow: 0px 0px 10px 5px black;
 }
