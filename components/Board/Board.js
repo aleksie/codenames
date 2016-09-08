@@ -12,6 +12,7 @@ class Board extends React.Component {
   constructor() {
     super();
     this.generateNewGameState = this.generateNewGameState.bind(this);
+    this.getOpponentUnrevealedIndexes = this.getOpponentUnrevealedIndexes.bind(this);
     this.checkWinner = this.checkWinner.bind(this);
     this.legendClick = this.legendClick.bind(this)
     this.newGameClick = this.newGameClick.bind(this)
@@ -39,8 +40,8 @@ class Board extends React.Component {
 
     console.log(this.types);
     console.log(types);
-    let wordsIndexes = this.getRandomIndexes(this.words.length - 1);
-    let typeIndexes = this.getRandomIndexes(this.types.length - 1);
+    let wordsIndexes = this.getRandomIndexes(this.words.length - 1, 25);
+    let typeIndexes = this.getRandomIndexes(this.types.length - 1, 25);
     console.log(wordsIndexes);
     console.log(typeIndexes);
     for (var i = 0; i < 25; i++) {
@@ -56,9 +57,9 @@ class Board extends React.Component {
     return cards;
   }
 
-  getRandomIndexes(max) {
+  getRandomIndexes(max, count) {
     let indexes = [];
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < count; i++) {
       let index = Math.floor(Math.random() * (max + 1));
       if (indexes.indexOf(index) == -1) {
         indexes.push(index);
@@ -102,6 +103,39 @@ class Board extends React.Component {
     this.setState(state);
   }
 
+  simulateOpponentTurn() {
+      let opponentType = this.isRedFirst ? "BLUE" : "RED";
+
+      let opponentUnrevealedIndexes = this.getOpponentUnrevealedIndexes(opponentType);
+      let randomIndexes = [];
+      if (opponentUnrevealedIndexes.length > 1) {
+          randomIndexes = this.getRandomIndexes(opponentUnrevealedIndexes.length - 1, 2);
+      } else {
+          randomIndexes = [0];
+      }
+
+      console.log(opponentUnrevealedIndexes);
+      console.log(randomIndexes);
+      let type = "";
+      let updated = this.state.cards.map(card => {
+          if(card.id === opponentUnrevealedIndexes[randomIndexes[0]] || (randomIndexes.length > 1 && card.id === opponentUnrevealedIndexes[randomIndexes[1]]) ) {
+              card.revealed = true;
+              type = card.type;
+          }
+          return card
+      })
+      this.setState ({cards: updated})
+      this.checkWinner(type);
+  }
+
+    getOpponentUnrevealedIndexes(opponentType) {
+        let cards = this.state.cards.filter(function(card) {
+            return (card.type === opponentType && card.revealed === false);
+        });
+        var indexes = cards.map(function(card) {return card.id;});
+        return indexes;
+    }
+
   checkWinner(type) {
     if (type === "YELLOW") {
       return;
@@ -120,6 +154,7 @@ class Board extends React.Component {
     return <div>
               <input type="button" className="buttonLegend" onClick={this.legendClick} value={this.state.isLegendShowing ? "HIDE LEGEND" : "SHOW LEGEND"} />
               <input type="button" className="buttonNewGame" onClick={this.newGameClick} value="NEW GAME"/>
+              <input type="button" className="buttonSimulateOpponentTurn" onClick={this.simulateOpponentTurn.bind(this)} value="SIMULATE OPPONENT TURN"/>
               <br/>
               <div className={s.container}>
                 <div className={s.row}>
