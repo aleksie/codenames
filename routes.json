@@ -3,13 +3,14 @@
   "page": "./pages/game",
   "chunk": "main"
 }, {
+  "path": "/loading",
+  "page": "./pages/loading",
+  "chunk": "main"
+}, {
   "path": "/error",
   "page": "./pages/error",
   "chunk": "main"
 }, {
   "path": "/about",
   "page": "./pages/about"
-}, {
-  "path": "/tasks/:status(pending|completed)?",
-  "page": "./pages/home"
 }]

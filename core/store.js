@@ -8,18 +8,32 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux'
 
-// Centralized application state
-// For more information visit http://redux.js.org/
-const store = createStore((state, action) => {
-  // TODO: Add action handlers (aka "reduces")
-  switch (action) {
-    case 'COUNT':
-      return { ...state, count: (state.count || 0) + 1 };
-    default:
-      return state;
+import rootReducer from '../reducers'
+
+const store = createStore(rootReducer)
+
+const addLoggingToDispatch = store => {
+  const rawDispatch = store.dispatch
+
+  if (!console.group)
+    return rawDispatch
+
+  return action => {
+    console.group(action.type)
+    console.log('%c prev state', 'color: gray', store.getState())
+    console.log('%c action', 'color: blue', action)
+    const returnValue = rawDispatch(action)
+    console.log('%c next state', 'color: green', store.getState())
+    console.groupEnd(action.type)
+    return returnValue
   }
-});
+}
+
+
+if (process.env.NODE_ENV !== 'production') {
+  store.dispatch = addLoggingToDispatch(store)
+}
 
 export default store;
