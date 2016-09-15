@@ -1,10 +1,22 @@
 [{
   "path": "/",
-  "page": "./pages/game",
+  "page": "./pages/loading",
   "chunk": "main"
 }, {
-  "path": "/loading",
-  "page": "./pages/loading",
+  "path": "/name",
+  "page": "./pages/name",
+  "chunk": "main"
+}, {
+  "path": "/sessions",
+  "page": "./pages/sessions",
+  "chunk": "main"
+}, {
+  "path": "/sessions/:id/lobby",
+  "page": "./pages/lobby",
+  "chunk": "main"
+}, {
+  "path": "/sessions/:id/game",
+  "page": "./pages/game",
   "chunk": "main"
 }, {
   "path": "/error",

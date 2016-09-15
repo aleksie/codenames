@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
 import { connect } from 'react-redux'
+import api from '../../core/api'
 
 class LoadingPage extends React.Component {
 
@@ -13,7 +14,5 @@ class LoadingPage extends React.Component {
     );
   }
 }
-
-// LoadingPage = connect()(LoadingPage);
 
 export default LoadingPage

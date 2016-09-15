@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import winner, * as fromWinner from './winner';
-import nav from './nav';
+import name, * as fromName from './name';
+import sessions from './sessions'
+import currentSession from './currentSession'
 
 export default combineReducers({
-  winner,
-  nav
+  name,
+  sessions,
+  currentSession,
 });
 
-export const getWinner = state => fromWinner.getWinner(state.winner)
+export const getName = state => fromName.getName(state.name)

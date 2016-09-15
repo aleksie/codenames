@@ -4,7 +4,6 @@ import Board from '../../components/Board';
 import s from './styles.css';
 import { connect } from 'react-redux'
 import { dispatch } from 'redux'
-import { getWinner } from '../../reducers'
 
 const actionCreator = () => ({
   type: 'NAVIGATE',
@@ -28,12 +27,6 @@ class GamePage extends React.Component {
 
 }
 
-GamePage = connect((state, ownProps) => {
-  console.log('select')
-  console.log(getWinner)
-  return { winner: getWinner(state) }
-}, {
-  proba: actionCreator
-})(GamePage);
+GamePage = connect()(GamePage);
 
 export default GamePage
