@@ -3,6 +3,7 @@ import cx from 'classnames';
 import s from './styles.css';
 import Board from '../../components/Board'
 import Hint from '../../components/Hint'
+import Log from '../../components/Log'
 import api from '../../core/api'
 import beep from '../../core/beep'
 
@@ -19,7 +20,7 @@ class Game extends React.Component {
     if (prevProps.game.turn !== this.props.game.turn && this.props.player.slot === this.props.game.turn)
       beep()
   }
-  
+
   tell(hint) {
     const color = this.props.player.slot.indexOf('red') > -1 ? 'red' : 'blue'
     api.send(`${color}Tell`, {
@@ -52,15 +53,17 @@ class Game extends React.Component {
 
     return (
       <div>
-        <h1>{this.props.game.turn}</h1>
-        <h2>
+        <h3></h3>
+        <Log log={this.props.game.log} />
+        <h3>{this.props.game.turn}</h3>
+        <h4>
           Red hint: <span style={{color:'darkred'}}>{redhint} </span>
           Blue hint: <span style={{color:'darkblue'}}>{bluehint} </span>
-        </h2>
+        </h4>
         {
           myTurn ?
           <div>
-            <h1>Your turn!</h1>
+            <h3>Your turn!</h3>
             {
               tell ?
               <div>

@@ -1,0 +1,35 @@
+.log {
+  list-style: none;
+  width: 450px;
+  margin: 0 auto;
+  border: 2px solid grey;
+  border-radius: 0.3em;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.logItem {
+  font-weight: bold;
+}
+
+.box {
+  border-radius: .5em;
+  margin: .5em;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+}
+
+.blue {
+  background-color: steelblue;
+}
+
+.red {
+  background-color: tomato;
+}
+
+.neutral {
+  background-color: yellow;
+}
+
+.assassin {
+  background-color: black;
+}
