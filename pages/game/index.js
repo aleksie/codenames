@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
-import Board from '../../components/Board';
+import Game from '../../components/Game';
 import s from './styles.css';
 import { connect } from 'react-redux'
 import { dispatch } from 'redux'
@@ -12,21 +12,23 @@ const actionCreator = () => ({
 
 class GamePage extends React.Component {
 
-  static propTypes = {};
-
-  componentDidMount() {
-    // setTimeout(() => {
-    //   console.log('firing')
-    //   this.props.proba()
-    // }, 3000)
-  }
-
   render() {
-    return ( < div > { this.props.winner } < Board / > < /div> );
+    console.log(this.props.game);
+    return (
+      <Layout>
+        <Game player={this.props.player} game={this.props.game} />
+      </Layout>
+    );
   }
 
 }
 
-GamePage = connect()(GamePage);
+const mapStateToProps = (state, ownProps) =>
+  ({
+    player: state.player,
+    game: state.currentSession.game
+  })
+
+GamePage = connect(mapStateToProps)(GamePage);
 
 export default GamePage

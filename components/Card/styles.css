@@ -1,72 +1,46 @@
 .card {
+  border: 2px solid #9E8E7E;
+  border-radius: .3em;
+  background-color: var(--base);
+  margin: 1px;
+  padding: 0;
   display: flex;
-  background-color: #eadaca;
-  border-radius: 12px;
-  padding: 9px;
-  text-align: center;
-  width: 300px;
-  height: 150px;
-  margin: 8px;
-}
-
-.inner {
-  display: flex;
-  flex-flow: column;
-  border: 2px solid #b8a48b;
-  border-radius: 8px;
-  padding: 0 5px 5px 5px;
-}
-
-.upper {
-  display: flex;
-  flex: 6 6 auto;
-  flex-flow: column;
-}
-
-.lower {
-  display: flex;
-  flex: 4 4 auto;
+  justify-content: center;
   align-items: center;
-  color: black;
-  background-color: white;
-  border-radius: 0px 0px 4px 4px;
-  font-size: 1.1em;
+  width: calc( calc( var(--vw) / 5) - 7px);
+  height: calc( calc( var(--vw) / 10) - 7px);
+  font-size: calc(var(--vw) / 40);
+  font-variant: small-caps;
   font-weight: bold;
-  padding: 4px;
-}
-
-.grey {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  color: #a29687;
-  font-style: italic;
-  border-top: 1.4px solid;
-  margin-bottom: 3px;
-  padding-top: 2px;
-  font-size: 0.9em;
-  transform: rotate(180deg);
-  font-weight: bold;
-}
-
-.circle {}
-
-.text {
-  margin: auto;
+  font-family: sans-serif;
 }
 
 .red {
-  box-shadow: 0px 0px 10px 5px tomato;
+  color: tomato;
+  border: 2px solid #B31700;
 }
 
 .blue {
-  box-shadow: 0px 0px 10px 5px cadetblue;
+  color: steelblue;
+  border: 2px solid #003668;
 }
 
-.yellow {
-  box-shadow: 0px 0px 10px 5px yellow;
+.assassin {
+  color: black;
+  border: 2px solid;
 }
 
-.black {
-  box-shadow: 0px 0px 10px 5px black;
+.neutral {
+  color: yellow;
+  border: 2px solid #B3B300;
+}
+
+.revealed {
+  text-decoration: line-through;
+  background-color: currentColor;
+}
+
+.revealed:hover {
+  background-color: var(--base);
+  border: 2px solid #9E8E7E;
 }

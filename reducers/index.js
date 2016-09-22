@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import name, * as fromName from './name';
+import player, * as fromPlayer from './player';
 import sessions from './sessions'
 import currentSession from './currentSession'
 
 export default combineReducers({
-  name,
+  player,
   sessions,
   currentSession,
 });

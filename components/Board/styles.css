@@ -1,11 +1,14 @@
 .container {
+  /*variables*/
+  --vw: 70vw;
+  --base: #eadaca;
+  /*variables*/
+  width: var(--vw);
+  margin: 0 auto;
+  padding: 0;
   display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
-
-.row {
-  display: flex;
-  flex-flow: row;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
 }

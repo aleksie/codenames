@@ -1,0 +1,10 @@
+.hintInput {
+  font-size: 2em;
+}
+
+.hintShow {
+  margin-left: 1em;
+  font-weight: bold;
+  font-size: 2em;
+  color: cadetblue
+}

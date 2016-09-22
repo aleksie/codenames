@@ -4,6 +4,7 @@ import * as actions from '../actions'
 import history from './history'
 
 const sock = new SockJS('http://localhost:9999/echo')
+// const sock = new SockJS('http://139.59.158.87:9999/echo')
 
 const log = (type, msg) => {
   console.log(`%c [socket][${type}] `, 'font-weight:bold;color:steelblue', msg)
