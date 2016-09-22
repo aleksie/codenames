@@ -16,7 +16,7 @@ class Board extends React.Component {
       <div className={s.container}>
           {
             this.props.game.cards.map(card =>
-              <Card card={card} onClick={this.cardClick.bind(this)}/>
+              <Card key={card.text} card={card} onClick={this.cardClick.bind(this)}/>
             )
           }
       </div>

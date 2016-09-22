@@ -9,7 +9,7 @@
   align-items: center;
   width: calc( calc( var(--vw) / 5) - 7px);
   height: calc( calc( var(--vw) / 10) - 7px);
-  font-size: calc(var(--vw) / 40);
+  font-size: calc(var(--vw) / 30);
   font-variant: small-caps;
   font-weight: bold;
   font-family: sans-serif;
