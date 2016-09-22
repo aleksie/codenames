@@ -4,6 +4,7 @@ import s from './styles.css';
 import Board from '../../components/Board'
 import Hint from '../../components/Hint'
 import api from '../../core/api'
+import beep from '../../core/beep'
 
 class Game extends React.Component {
 
@@ -14,6 +15,11 @@ class Game extends React.Component {
     this.pass = this.pass.bind(this)
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.game.turn !== this.props.game.turn && this.props.player.slot === this.props.game.turn)
+      beep()
+  }
+  
   tell(hint) {
     const color = this.props.player.slot.indexOf('red') > -1 ? 'red' : 'blue'
     api.send(`${color}Tell`, {
