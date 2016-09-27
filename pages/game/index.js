@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
-import Game from '../../components/Game';
+import Game from './Game';
 import s from './styles.css';
 import { connect } from 'react-redux'
 import { dispatch } from 'redux'
@@ -11,9 +11,7 @@ const actionCreator = () => ({
 })
 
 class GamePage extends React.Component {
-
   render() {
-    console.log(this.props.game);
     return (
       <Layout>
         <Game player={this.props.player} game={this.props.game} />

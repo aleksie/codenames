@@ -1,11 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
-import Board from '../../components/Board'
-import Hint from '../../components/Hint'
-import Log from '../../components/Log'
-import api from '../../core/api'
-import beep from '../../core/beep'
+import Board from './Board'
+import Hint from './Hint'
+import Log from './Log'
+import GameStatus from './GameStatus'
+import api from '../../../core/api'
+import beep from '../../../core/beep'
 
 class Game extends React.Component {
 
@@ -53,13 +54,8 @@ class Game extends React.Component {
 
     return (
       <div>
-        <h3></h3>
         <Log log={this.props.game.log} />
-        <h3>{this.props.game.turn}</h3>
-        <h4>
-          Red hint: <span style={{color:'darkred'}}>{redhint} </span>
-          Blue hint: <span style={{color:'darkblue'}}>{bluehint} </span>
-        </h4>
+        <GameStatus />
         {
           myTurn ?
           <div>
