@@ -6,6 +6,11 @@ import { connect } from 'react-redux'
 
 class GameStatus extends React.Component {
 
+  constructor() {
+    super()
+    this.getClassNames = this.getClassNames.bind(this)
+  }
+
   findPlayers(players) {
       let redTell = '', blueTell = '', redGuess = '', blueGuess = ''
 
@@ -34,14 +39,24 @@ class GameStatus extends React.Component {
     return {redScore, blueScore}
   }
 
+  getClassNames(playerSlot, gameTurn) {
+    return cx({
+      [s.player]: true,
+      [s.red]: playerSlot.indexOf('red') > -1,
+      [s.blue]: playerSlot.indexOf('blue') > -1,
+      [s.active]: playerSlot === this.props.session.game.turn
+    })
+  }
+
   render() {
     const {redTell, blueTell, redGuess, blueGuess} = this.findPlayers(this.props.session.players)
     const {redScore, blueScore} = this.findScore(this.props.session.game)
+    const cn = this.getClassNames
     return (
       <div className={s.gameStatus}>
         <div className={s.horizontal}>
-          <div className={`${s.player} ${s.red}`}>{redTell}</div>
-          <div className={`${s.player} ${s.red}`}>{redGuess}</div>
+          <div className={cn('red-tell')}>{redTell}</div>
+          <div className={cn('red-guess')}>{redGuess}</div>
         </div>
         <div className={s.vertical}>
           <div className={`${s.score} ${s.red}`}>{redScore}</div>
@@ -49,8 +64,8 @@ class GameStatus extends React.Component {
           <div className={`${s.score} ${s.blue}`}>{blueScore}</div>
         </div>
         <div className={s.horizontal}>
-          <div className={`${s.player} ${s.blue}`}>{blueTell}</div>
-          <div className={`${s.player} ${s.blue}`}>{blueGuess}</div>
+          <div className={cn('blue-tell')}>{blueTell}</div>
+          <div className={cn('blue-guess')}>{blueGuess}</div>
         </div>
       </div>
     )

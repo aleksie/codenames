@@ -4,8 +4,6 @@ import s from './styles.css';
 import { connect } from 'react-redux'
 import api from '../../core/api'
 
-import Hint from '../../components/hint'
-
 class LoadingPage extends React.Component {
 
   render() {
