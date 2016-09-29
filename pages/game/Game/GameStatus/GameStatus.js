@@ -48,6 +48,25 @@ class GameStatus extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.setTitle()
+  }
+
+  componentDidUpdate() {
+    this.setTitle()
+  }
+
+  setTitle() {
+    const filtered = this.props.session.players.filter(player => player.slot === this.props.session.game.turn)
+    if(filtered.length === 1) {
+      const player = filtered[0]
+      if(player.name === this.props.player.name)
+        document.title = `Your Turn!`
+      else
+        document.title = `${player.name}\`s turn`
+    }
+  }
+
   render() {
     const {redTell, blueTell, redGuess, blueGuess} = this.findPlayers(this.props.session.players)
     const {redScore, blueScore} = this.findScore(this.props.session.game)
