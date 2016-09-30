@@ -22,18 +22,29 @@ class Log extends React.Component {
             })
             const player = <span className={cn}>{`${log.player.name}`} </span>
 
-            const action = <span className={s.box}>{ log.card ? ' guessed ' : ' told '}</span>
+            const action = <span className={s.box}>{`${log.action}ed`}</span>
 
-            let subject
-            if(log.card) {
-              cn = cx({
+            let sbj
+
+            if(log.action === 'pass') {
+              sbj = ''
+              cn = {[s.box]:true}
+            }
+            if(log.action === 'hint') {
+              sbj = `${log.hint.hint} - ${log.hint.count}`
+              cn = {[s.box]:true}
+            }
+            if(log.action === 'guess') {
+              sbj = log.card.text
+              cn = {
                 [s.box]:true,
                 [s[log.card.type]]: true
-              })
-              subject = <span className={cn}>{`${log.card.text}`}</span>
-            } else {
-              subject = <span className={s.box}>{`${log.hint.hint} - ${log.hint.count}` }</span>
+              }
             }
+
+            cn = cx(cn)
+
+            const subject = <span className={cn}>{sbj}</span>
 
             return (
               <li key={i} className={s.logItem}>
