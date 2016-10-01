@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
+import GameOver from '../GameOver';
 
 import { connect } from 'react-redux'
 
@@ -68,6 +69,12 @@ class GameStatus extends React.Component {
   }
 
   render() {
+
+    if(this.props.session.game.winner) {
+      const win = this.props.player.slot.indexOf(this.props.session.game.winner) > -1 ? 'won' : 'lost'
+      return <GameOver win={win} />
+    }
+
     const {redTell, blueTell, redGuess, blueGuess} = this.findPlayers(this.props.session.players)
     const {redScore, blueScore} = this.findScore(this.props.session.game)
     const cn = this.getClassNames
