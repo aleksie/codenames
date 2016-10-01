@@ -1,35 +1,68 @@
+.logContainer {
+  width: 300px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  display: flex;
+  flex-flow: column;
+}
+
 .log {
+  flex: 1 1 auto;
   list-style: none;
-  width: 450px;
-  margin: 0 auto;
-  border: 2px solid grey;
-  border-radius: 0.3em;
-  height: 100px;
+  margin: 0;
+  padding: 0;
   overflow-y: scroll;
+  border-top: 1px solid rgba(0,0,0,.1);
+  max-height: 60vh;
+  background-color: white;
+}
+
+.title {
+  padding: 3px;
+  color: black;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  text-align: center;
+  background-color: #ececec;
+}
+
+.bottomLeft {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
 }
 
 .logItem {
-  font-weight: bold;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 8px
 }
 
 .box {
-  border-radius: .5em;
-  margin: .5em;
-  padding: 0.1em 0.5em 0.1em 0.5em;
+  margin-right: 8px;
+  color: grey;
+}
+
+.hint {
+  text-decoration: underline;
+  /*font-weight: bold;*/
+  color: black;
 }
 
 .blue {
-  background-color: steelblue;
+  font-weight: bold;
+  color: steelblue;
 }
 
 .red {
-  background-color: tomato;
+  font-weight: bold;
+  color: tomato;
 }
 
 .neutral {
-  background-color: yellow;
+  font-weight: bold;
+  color: yellow;
 }
 
 .assassin {
-  background-color: black;
+  font-weight: bold;
+  color: black;
 }

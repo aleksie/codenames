@@ -1,6 +1,6 @@
 .container {
   /*variables*/
-  --vw: 70vw;
+  --vw: 100vmin;
   --base: #eadaca;
   /*variables*/
   width: var(--vw);
