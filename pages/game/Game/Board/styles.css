@@ -1,8 +1,9 @@
-.container {
-  /*variables*/
+:root {
   --vw: 100vmin;
   --base: #eadaca;
-  /*variables*/
+}
+
+.container {
   width: var(--vw);
   margin: 0 auto;
   padding: 0;

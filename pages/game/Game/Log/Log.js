@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import s from './styles.css';
+import gs from '../../../../styles/styles.css'
 
 class Log extends React.Component {
 
@@ -21,14 +22,22 @@ class Log extends React.Component {
 
     if(!this.state.open)
       return (
-          <button onClick={this.toggle.bind(this)} className={`${s.bottomLeft} mdl-button mdl-button--fab mdl-button--mini-fab`}>
+          <button onClick={this.toggle.bind(this)} className={`${s.widget} mdl-button mdl-button--fab mdl-button--mini-fab`}>
             <i className="material-icons">add</i>
           </button>
       )
 
+    if(!this.props.log.length || this.props.log.length === 0)
+      return (
+        <div onClick={this.toggle.bind(this)} className={`${s.logContainer} ${s.widget}`}>
+          <div className={gs.boxTitle}>Log</div>
+          <p style={{margin:'.5em 1em'}}>No plays yet.</p>
+        </div>
+      )
+
     return (
-      <div onClick={this.toggle.bind(this)} className={`${s.logContainer} ${s.bottomLeft}`}>
-        <div className={s.title}>Log</div>
+      <div onClick={this.toggle.bind(this)} className={`${s.logContainer} ${s.widget}`}>
+        <div className={gs.boxTitle}>Log</div>
         <ul ref="ul" className={s.log}>
           {
             this.props.log.map((log,i) => {

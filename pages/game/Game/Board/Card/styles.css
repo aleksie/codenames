@@ -1,3 +1,8 @@
+:root {
+  --vw: 100vmin;
+  --base: #eadaca;
+}
+
 .card {
   border: 2px solid #9E8E7E;
   border-radius: .3em;

@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
 import GameOver from '../GameOver';
+import GameTurn from './GameTurn';
 
 import { connect } from 'react-redux'
 
@@ -79,19 +80,22 @@ class GameStatus extends React.Component {
     const {redScore, blueScore} = this.findScore(this.props.session.game)
     const cn = this.getClassNames
     return (
-      <div className={s.gameStatus}>
-        <div className={s.horizontal}>
-          <div className={cn('red-tell')}>{redTell}</div>
-          <div className={cn('red-guess')}>{redGuess}</div>
-        </div>
-        <div className={s.vertical}>
-          <div className={`${s.score} ${s.red}`}>{redScore}</div>
-          <div className={s.score}>-</div>
-          <div className={`${s.score} ${s.blue}`}>{blueScore}</div>
-        </div>
-        <div className={s.horizontal}>
-          <div className={cn('blue-tell')}>{blueTell}</div>
-          <div className={cn('blue-guess')}>{blueGuess}</div>
+      <div>
+        <GameTurn />
+        <div className={s.gameStatus}>
+          <div className={s.horizontal}>
+            <div className={cn('red-tell')}>{redTell}</div>
+            <div className={cn('red-guess')}>{redGuess}</div>
+          </div>
+          <div className={s.vertical}>
+            <div className={`${s.score} ${s.red}`}>{redScore}</div>
+            <div className={s.score}>-</div>
+            <div className={`${s.score} ${s.blue}`}>{blueScore}</div>
+          </div>
+          <div className={s.horizontal}>
+            <div className={cn('blue-tell')}>{blueTell}</div>
+            <div className={cn('blue-guess')}>{blueGuess}</div>
+          </div>
         </div>
       </div>
     )

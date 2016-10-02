@@ -1,0 +1,20 @@
+.widget {
+  composes: floating bottom right from "../../../../styles/styles.css";
+}
+
+.guessCont {
+  composes: box from "../../../../styles/styles.css";
+}
+
+.guessHint {
+  padding: 0 1em 0 1em;
+  margin: 0;
+}
+
+.title {
+  padding: 3px;
+  color: black;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  background-color: #ececec;
+}

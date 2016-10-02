@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
+import gs from '../../../../styles/styles.css'
 
 import NumberPicker from './NumberPicker'
 
@@ -52,20 +53,20 @@ class Hint extends React.Component {
 
     if(!this.state.open)
       return (
-          <button onClick={this.toggle.bind(this)} className={`${s.bottomRight} mdl-button mdl-button--fab mdl-button--mini-fab`}>
+          <button onClick={this.toggle.bind(this)} className={`${s.widget} mdl-button mdl-button--fab mdl-button--mini-fab`}>
             <i className="material-icons">add</i>
           </button>
       )
 
     return (
-      <div className={`${s.hintCont} ${s.bottomRight}`}>
-          <div className={s.title} onClick={this.toggle.bind(this)}>Action</div>
+      <div className={`${s.hintCont} ${s.widget}`}>
+          <div className={gs.boxTitle} onClick={this.toggle.bind(this)}>Hint</div>
           <span className={s.hintShow}>{`${this.state.hint} ${this.state.count}`}</span>
-          <input className={s.hintInput} onChange={this.updateHint} ref="hint"/>
+          <input className={gs.boxAction} onChange={this.updateHint} ref="hint"/>
           <NumberPicker onPick={this.updateCount.bind(this)}/>
           {
             this.showSubmit() ?
-              <button onClick={this.onHint} className={`${s.full} mdl-button mdl-js-button mdl-button--raised`}>Hint</button>
+              <button onClick={this.onHint} className={gs.boxAction}>Hint</button>
               : ''
           }
       </div>

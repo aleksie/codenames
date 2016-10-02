@@ -1,4 +1,5 @@
 .gameStatus {
+  composes: box from "../../../../styles/styles.css";
   display: flex;
   margin: 0 auto;
   flex-direction: row;
@@ -6,6 +7,7 @@
   font-weight: bold;
   line-height: 1.5em;
   padding: 1em;
+  margin: 1em
 }
 
 .player {

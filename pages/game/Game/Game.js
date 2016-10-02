@@ -5,6 +5,7 @@ import Board from './Board'
 import Hint from './Hint'
 import Log from './Log'
 import GameStatus from './GameStatus'
+import Guess from './Guess'
 import api from '../../../core/api'
 import beep from '../../../core/beep'
 
@@ -14,7 +15,6 @@ class Game extends React.Component {
     super()
     this.guess = this.guess.bind(this)
     this.tell = this.tell.bind(this)
-    this.pass = this.pass.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -38,10 +38,6 @@ class Game extends React.Component {
     })
   }
 
-  pass() {
-    api.send('pass')
-  }
-
   render() {
     const myTurn = this.props.player.slot === this.props.game.turn
     const tell = this.props.player.slot.indexOf('tell') > -1
@@ -55,23 +51,14 @@ class Game extends React.Component {
     return (
       <div>
         <Log log={this.props.game.log} />
-        <GameStatus />
         {
-          myTurn ?
-          <div>
-            <h3>Your turn!</h3>
-            {
-              tell ?
-              <div>
-                <Hint onHint={this.tell} />
-              </div>:
-              <div>
-                <button onClick={this.pass}>Pass</button>
-              </div>
-            }
-          </div>: ''
+          myTurn && tell ? <Hint onHint={this.tell} /> : ''
         }
+        {
+          myTurn && !tell ? <Guess /> : ''
 
+        }
+        <GameStatus />
         <Board cardClick={this.guess} game={this.props.game} />
       </div>
     )
