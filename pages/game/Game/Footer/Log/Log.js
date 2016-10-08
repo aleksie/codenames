@@ -21,7 +21,10 @@ class Log extends React.Component {
   render() {
     let content;
     if(!this.props.log.length || this.props.log.length === 0)
-      content = <p style={{margin:'.5em 1em'}}>No plays yet.</p>
+      content =
+        <div style={{display:'flex'}}>
+          <p style={{margin:'.5em 1em'}}>No plays yet.</p>
+        </div>
     else
       content =
           <ul ref="ul" className={s.log}>

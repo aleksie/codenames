@@ -1,9 +1,6 @@
-.widget {
-  composes: floating bottom right from "../../../../styles/styles.css";
-}
-
 .guessCont {
-  composes: box from "../../../../styles/styles.css";
+  display: flex;
+  flex-flow: column;
 }
 
 .guessHint {

@@ -2,20 +2,14 @@ import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
 import Board from './Board'
-// import Hint from './Hint'
 import GameStatus from './GameStatus'
 import Footer from './Footer'
-import Guess from './Guess'
 import api from '../../../core/api'
 import beep from '../../../core/beep'
 
-class Game extends React.Component {
+import {connect} from 'react-redux'
 
-  constructor() {
-    super()
-    this.guess = this.guess.bind(this)
-    this.tell = this.tell.bind(this)
-  }
+class Game extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.game.turn !== this.props.game.turn && this.props.player.slot === this.props.game.turn)
@@ -59,13 +53,20 @@ class Game extends React.Component {
     return (
       <div>
         <GameStatus />
-        <Board cardClick={this.guess} game={this.props.game} />
-
+        <Board cardClick={this.guess.bind(this)} game={this.props.game} />
         <Footer />
       </div>
     )
   }
 
 }
+
+const mapStateToProps = (state, ownProps) =>
+  ({
+    player: state.player,
+    game: state.currentSession.game
+  })
+
+Game = connect(mapStateToProps)(Game);
 
 export default Game;
