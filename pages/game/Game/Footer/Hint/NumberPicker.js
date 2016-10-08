@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
-import gs from '../../../../styles/styles.css'
+import gs from '../../../../../styles/styles.css'
 
 
 class NumberPicker extends React.Component {

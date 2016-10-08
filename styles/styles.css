@@ -32,6 +32,7 @@
   border-radius: .3em;
   padding: .4em;
   outline: none;
+  text-align: center;
 }
 
 .boxAction:active {

@@ -1,0 +1,6 @@
+{
+  "name": "PopBox",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PopBox.js"
+}

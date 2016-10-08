@@ -1,10 +1,7 @@
-.widget {
-  composes: floating bottom right from "../../../../styles/styles.css";
-}
-
 .hintCont {
-  composes: box from "../../../../styles/styles.css";
-  width: 350px;
+  width: 250px;
+  display: flex;
+  flex-flow: column;
 }
 
 .hintInput {
@@ -24,10 +21,9 @@
 }
 
 .hintShow {
-  padding: 1em;
+  padding: 0.5em;
   background: white;
-  font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
   color: cadetblue;
   text-align: center;
 }

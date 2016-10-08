@@ -2,9 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 import s from './styles.css';
 import Board from './Board'
-import Hint from './Hint'
-import Log from './Log'
+// import Hint from './Hint'
 import GameStatus from './GameStatus'
+import Footer from './Footer'
 import Guess from './Guess'
 import api from '../../../core/api'
 import beep from '../../../core/beep'
@@ -48,18 +48,20 @@ class Game extends React.Component {
     const bh = this.props.game.blueHint
     const bluehint = bh ? `${bh.hint} ${bh.count}` : ''
 
+        // {
+        //   myTurn && tell ? <Hint onHint={this.tell} /> : ''
+        // }
+        // {
+        //   myTurn && !tell ? <Guess /> : ''
+        //
+        // }
+
     return (
       <div>
-        <Log log={this.props.game.log} />
-        {
-          myTurn && tell ? <Hint onHint={this.tell} /> : ''
-        }
-        {
-          myTurn && !tell ? <Guess /> : ''
-
-        }
         <GameStatus />
         <Board cardClick={this.guess} game={this.props.game} />
+
+        <Footer />
       </div>
     )
   }

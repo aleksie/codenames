@@ -29,11 +29,14 @@ class Layout extends React.Component {
   }
 
   render() {
+    const ovfl = {
+
+    }
           // <Header />
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
         <div className="mdl-layout__inner-container">
-          <main className="mdl-layout__content">
+          <main className="mdl-layout__content" style={{ 'overflowY': 'hidden' }}>
             <div {...this.props} className={cx(s.content, this.props.className)} />
           </main>
         </div>
