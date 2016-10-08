@@ -27,3 +27,9 @@ export const gameState = state =>
   type: 'gameState',
   value: state
 })
+
+export const chatMessage = messages =>
+({
+  type: 'chatMessage',
+  value: messages
+})

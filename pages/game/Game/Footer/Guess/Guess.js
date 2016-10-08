@@ -43,7 +43,7 @@ class Guess extends React.Component {
 
       <PopBox title="guess" >
         <div className={`${s.guessCont}`}>
-          <h1 className={s.guessHint} onClick={this.toggle.bind(this)}>{str}</h1>
+          <strong className={s.guessHint} onClick={this.toggle.bind(this)}>{str}</strong>
           <button className={gs.boxAction} onClick={this.pass.bind(this)}>Pass</button>
         </div>
       </PopBox>

@@ -3,8 +3,10 @@
   /*width: 200px;*/
   z-index: 999;
   border-radius: .3em .3em 0 0;
-  border: 1px solid #A0A0A0
+  border: 1px solid #A0A0A0;
+  min-width: 200px;
 }
+
 .title {
   padding: 3px;
   text-align: center;
@@ -20,4 +22,26 @@
   padding-top: 0 !important;
   border-bottom: 0 !important;
   border-top: 0 !important;
+}
+
+@keyframes pop {
+  0% {
+    background-color: #ececec;
+  }
+  80% {
+    background-color: #ececec;
+  }
+  90% {
+    background-color: steelblue;
+  }
+  100% {
+    background-color: #ececec;
+  }
+}
+
+.popping {
+  animation-name: pop;
+  animation-duration: 2.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
 }

@@ -1,11 +1,14 @@
 .guessCont {
+  composes: boxWidth from '../styles.css';
   display: flex;
   flex-flow: column;
 }
 
 .guessHint {
-  padding: 0 1em 0 1em;
-  margin: 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.5em 0;
 }
 
 .title {

@@ -26,6 +26,10 @@ const handleMessage = message => {
       store.dispatch(actions.gameState(message.value))
       break;
 
+    case 'chatMessage':
+      store.dispatch(actions.chatMessage(message.value))
+      break;
+
     default:
       console.log('unknown message');
       break;

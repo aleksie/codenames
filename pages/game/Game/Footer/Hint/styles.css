@@ -1,5 +1,5 @@
 .hintCont {
-  width: 250px;
+  composes: boxWidth from '../styles.css';
   display: flex;
   flex-flow: column;
 }

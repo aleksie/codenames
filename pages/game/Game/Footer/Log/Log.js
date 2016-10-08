@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 class Log extends React.Component {
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if(this.refs.ul)
       this.refs.ul.scrollTop = this.refs.ul.scrollHeight;
   }
@@ -22,9 +22,7 @@ class Log extends React.Component {
     let content;
     if(!this.props.log.length || this.props.log.length === 0)
       content =
-        <div style={{display:'flex'}}>
-          <p style={{margin:'.5em 1em'}}>No plays yet.</p>
-        </div>
+        <p style={{margin:'auto'}}>No plays yet.</p>
     else
       content =
           <ul ref="ul" className={s.log}>
@@ -54,7 +52,8 @@ class Log extends React.Component {
                   sbj = log.card.text
                   cn = {
                     [s.box]:true,
-                    [s[log.card.type]]: true
+                    [s[log.card.type]]: true,
+                    [s.upper]:true
                   }
                 }
 
@@ -62,9 +61,9 @@ class Log extends React.Component {
 
                 const subject = <span className={cn}>{sbj}</span>
 
+                    // {timer}
                 return (
                   <li key={i} className={s.logItem}>
-                    {timer}
                     {player}
                     {action}
                     {subject}
@@ -76,7 +75,9 @@ class Log extends React.Component {
 
     return (
       <PopBox title="log" onToggle={this.onToggle.bind(this)}>
-        {content}
+        <div className={s.logCon}>
+          {content}
+        </div>
       </PopBox>
     )
 

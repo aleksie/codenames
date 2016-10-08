@@ -3,10 +3,16 @@
   margin: 0;
   padding: 0;
   overflow-y: scroll;
-  max-height: 10em;
+  height: 100%;
   background-color: white;
 }
 
+.logCon {
+  composes: boxWidth from '../styles.css';
+  display: flex;
+  flex-flow: column;
+  height: 13em;
+}
 
 
 .logItem {
@@ -35,10 +41,14 @@
 
 .neutral {
   font-weight: bold;
-  color: yellow;
+  color: #bdbd03;
 }
 
 .assassin {
   font-weight: bold;
   color: black;
+}
+
+.upper {
+  text-transform: uppercase;
 }

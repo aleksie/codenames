@@ -24,7 +24,7 @@ class PopBox extends React.Component {
 
   render() {
 
-    if(!this.state.open)
+    if(!this.state.open) {
       return (
       <div className={s.popBox}>
         <div className={s.title} onClick={this.toggle}>{this.props.title}</div>
@@ -33,6 +33,7 @@ class PopBox extends React.Component {
         </div>
       </div>
       )
+    }
 
     return (
       <div className={s.popBox}>
