@@ -11,11 +11,15 @@ import api from '../../../../../core/api'
 
 class Hint extends React.Component {
 
-  state = {
-    open: false,
-    hint: '',
-    count: '',
-    showSubmit: false
+  state = this.getInitialState()
+
+  getInitialState() {
+    return {
+      open: false,
+      hint: '',
+      count: '',
+      showSubmit: false
+    }
   }
 
   constructor() {
@@ -40,6 +44,7 @@ class Hint extends React.Component {
       sessionId: this.props.player.currentSessionId,
       value: {hint, count}
     })
+    this.setState(this.getInitialState())
   }
 
   updateHint() {
