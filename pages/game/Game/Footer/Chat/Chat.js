@@ -9,6 +9,10 @@ import {connect} from 'react-redux';
 
 class Chat extends React.Component {
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.session.chat.length !== this.props.session.chat.length
+  }
+
   componentDidUpdate() {
     if(this.refs.ul)
       this.refs.ul.scrollTop = this.refs.ul.scrollHeight;
@@ -18,10 +22,6 @@ class Chat extends React.Component {
     if(this.refs.ul) {
       setTimeout(()=> this.refs.ul.scrollTop = this.refs.ul.scrollHeight , 0)
     }
-  }
-
-  componentWillUpdate() {
-    console.log('will udpate');
   }
 
   onKeyPress(e) {
@@ -39,9 +39,7 @@ class Chat extends React.Component {
     let content;
     if(!this.props.session.chat.length || this.props.session.chat.length === 0)
       content =
-        <div className={s.chatCon}>
           <p style={{margin:'auto'}}>No messages yet.</p>
-        </div>
     else
       content =
           <ul ref="ul" className={s.chat}>
@@ -61,8 +59,9 @@ class Chat extends React.Component {
             }
           </ul>
 
+    const pop = !!this.props.session.chat.length
     return (
-      <PopBox title="chat" onToggle={this.onToggle.bind(this)}>
+      <PopBox title="chat" pop={pop} onToggle={this.onToggle.bind(this)}>
         <div className={s.chatCon}>
           {content}
           <input ref="input" type="text" placeholder="Type a message..." className={s.input} onKeyPress={this.onKeyPress.bind(this)}/>

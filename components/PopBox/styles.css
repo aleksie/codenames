@@ -24,24 +24,16 @@
   border-top: 0 !important;
 }
 
-@keyframes pop {
-  0% {
-    background-color: #ececec;
-  }
-  80% {
-    background-color: #ececec;
-  }
-  90% {
-    background-color: steelblue;
-  }
-  100% {
-    background-color: #ececec;
-  }
+.popping {
+  animation: pop 1.5s infinite;
+  animation-timing-function: steps(1);
 }
 
-.popping {
-  animation-name: pop;
-  animation-duration: 2.3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
+@keyframes pop {
+  0%, 100% {
+    background-color: #ececec;
+  }
+  50% {
+    background-color: #d3d3d3;
+  }
 }

@@ -13,21 +13,41 @@ class PopBox extends React.Component {
     this.toggle = this.toggle.bind(this)
   }
 
+  componentDidMount() {
+    this.updatePop(this.props.pop)
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.updatePop(newProps.pop)
+  }
+
+  updatePop(pop) {
+    this.setState({
+      ...this.state,
+      pop: pop
+    })
+  }
+
   toggle() {
     this.setState({
       ...this.state,
-      open: !this.state.open
+      open: !this.state.open,
+      pop: false
     })
     if(this.props.onToggle)
       this.props.onToggle()
   }
 
   render() {
+    const titleClass = cx({
+      [s.title]: true,
+      [s.popping]: this.state.pop && !this.state.open
+    })
 
     if(!this.state.open) {
       return (
       <div className={s.popBox}>
-        <div className={s.title} onClick={this.toggle}>{this.props.title}</div>
+        <div className={titleClass} onClick={this.toggle}>{this.props.title}</div>
         <div className={s.hide}>
           {this.props.children}
         </div>
@@ -37,7 +57,7 @@ class PopBox extends React.Component {
 
     return (
       <div className={s.popBox}>
-        <div className={s.title} onClick={this.toggle}>{this.props.title}</div>
+        <div className={titleClass} onClick={this.toggle}>{this.props.title}</div>
         {this.props.children}
       </div>
     )
